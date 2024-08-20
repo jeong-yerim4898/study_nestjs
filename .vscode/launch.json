@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug NestJS",
+            "runtimeExecutable": "yarn",
+            "runtimeArgs": [
+                "start:debug"
+            ],
+            // vs상의 터미널
+            "console": "integratedTerminal",
+            "restart": true,
+            // NestJS 디버깅 기본 port
+            "port" : 9229,
+            "autoAttachChildProcesses": true
+        }
+    ]
+}
