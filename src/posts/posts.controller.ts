@@ -56,7 +56,7 @@ export class PostsController {
     }
 
     //5) DELETE /posts/:id
-    // id에 해당하는 post를 삭제한다.\
+    // id에 해당하는 post를 삭제한다.
     @Delete(':id')
     deletePost(@Param('id', ParseIntPipe) id: number) {
        return this.postsService.deletePost(id);
