@@ -1,6 +1,8 @@
 import {Body, Controller, DefaultValuePipe, Delete, Get, NotFoundException, Param, ParseIntPipe, Patch, Post, UseGuards,Request} from '@nestjs/common';
 import {PostsService} from './posts.service';
 import { AccessTokenGuard } from 'src/auth/guard/bearer-token.guard';
+import { UsersModel } from 'src/users/entites/users.entity';
+import { User } from 'src/users/decorator/user.decorator';
 
 
 /**
@@ -36,13 +38,11 @@ export class PostsController {
     @Post()
     @UseGuards(AccessTokenGuard)
     postPost(
-        @Request() req :any,
+        @User() user : UsersModel,
         @Body('title') title: string,
         @Body('content') content: string,
-    ) {
-        const authorId = req.user.id;
-        
-        return this.postsService.createPost(authorId, title, content);
+    ) {        
+        return this.postsService.createPost(user.id, title, content);
     };
 
     //4) PATCh /posts/:id
