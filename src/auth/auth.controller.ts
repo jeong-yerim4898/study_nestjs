@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { MaxLengthPipe, MinLengthPipe, PasswordPipe } from './pipe/password.pipie';
 import { BasicTokenGuard } from './guard/basic-token.guard';
 import { AccessTokenGuard, RefreshTokenGuard } from './guard/bearer-token.guard';
+import { RegisterUserDto } from './dto/register-user.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -54,12 +55,8 @@ export class AuthController {
 
   @Post('register/email')
   postRegisterEmail(
-    @Body('email') email : string,
-    @Body('nickname') nickname : string,
-    @Body('password', new MaxLengthPipe(8, '비밃번호'), new MinLengthPipe(3)) password : string
+    @Body()  body : RegisterUserDto
   ) {
-    return this.authService.registerWithEmail({
-      nickname, email, password
-    })
+    return this.authService.registerWithEmail(body)
   }
 }
