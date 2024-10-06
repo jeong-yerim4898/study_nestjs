@@ -6,7 +6,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  @UseInterceptors(ClassSerializerInterceptor)
+  // @UseInterceptors(ClassSerializerInterceptor)
   /**
    * serialzation -> 직렬화 -> 현재 시스템에서 사용되느 (NestJS) 데이터의 구조를 다른 시스템에서도 쉽게 사용할 수 있는 포맷으로 변환
    *                      -> class의 object에서 JSON 포맷으로 변환
